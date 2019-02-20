@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var drawingCanvas = document.getElementById('canvas');
+            if (drawingCanvas && drawingCanvas.getContext) {
+                var context = drawingCanvas.getContext('2d');
+                // Рисуем окружность 
+                context.strokeStyle = "#000";
+                context.fillStyle = "#fc0";
+                context.beginPath();
+                context.arc(100, 100, 50, 0, Math.PI * 2, true);
+                context.closePath();
+                context.stroke();
+                context.fill();
+                // Рисуем левый глаз 
+                context.fillStyle = "#fff";
+                context.beginPath();
+                context.arc(84, 90, 8, 0, Math.PI * 2, true);
+                context.closePath();
+                context.stroke();
+                context.fill();
+                // Рисуем правый глаз 
+                context.beginPath();
+                context.arc(116, 90, 8, 0, Math.PI * 2, true);
+                context.closePath();
+                context.stroke();
+                context.fill();
+                // Рисуем рот
+                context.beginPath();
+                context.moveTo(70, 115);
+                context.quadraticCurveTo(100, 130, 130, 115);
+                context.quadraticCurveTo(100, 150, 70, 115);
+                context.closePath();
+                context.stroke();
+                context.fill();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>lab 1 task 1</h1>
+    </header>
+    <nav>
+        <a href="#arcticle">arcticle</a>
+        <a href="#datalist">datalist</a>
+        <a href="#footer">footer</a>
+    </nav>
+    <aside style="float:right">
+        <p>It`s aside tag</p>
+    </aside>
+    <main>
+        <article id="arcticle">
+            <figure>
+                <picture><img src="images/ubuntu.png" alt="Ubuntu logo" style="width:5%" /></picture>
+                <figcaption>Ubuntu logo</figcaption>
+            </figure>
+            <figure>
+                <canvas id="canvas" width="200" height="200">
+                    <p>browser doesn't support drawing.</p>
+                </canvas>
+                <figcaption>Canvas picture</figcaption>
+            </figure>
+        </article>
+        <audio controls="controls" id="audio">
+            <source src="sounds/zelda-dubstep.mp3" type='audio/mpeg'>
+            <track kind="subtitles" src="" srclang="uk" label="Український">
+        </audio>
+        <p>bdi tag:<bdi id="bdi">שבת</bdi></p>
+        <form id="datalist" oninput="result.value=nm.value.split('').reverse().join('')">
+            <p>Enter your name:
+                <input list="datalist" type="text" name="nm" autofocus>
+                <datalist >
+                    <option value="Vitalik">Vitalik</option>
+                    <option value="Rogalik">Rogalik</option>
+                </datalist></p>
+            <p>Reversed name: <output name="result"></output></p>
+        </form>
+
+        <details>
+            <summary>Lorem</summary>
+            Lorem, ipsum dolor sit <mark>amet</mark> consectetur adipisicing elit. Necessitatibus, incidunt!
+        </details>
+        <embed src="videos/ПОДВОДНЫЙ ТЕРРАРИУМ, БОЛЬШИЕ ПЕРЕМЕНЫ!.mp4" width="400" height="300" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+            pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        <p>The HTML menuitem element is deprecated</p>
+        <section>
+            <p>Mark</p>
+            <meter value="1" max="5" low="3" high="5">Very bad</meter>
+            <meter value="2" max="5" low="3" high="5">Bad</meter>
+            <meter value="3" max="5" low="3" high="5">Normal</meter>
+            <meter value="4" max="5" low="3" high="5">>Good</meter>
+            <meter value="5" max="5" low="3" high="5">>Excelent</meter>
+        </section>
+        <section>
+            <p>It`s progress bar</p>
+            <progress max="100" value="25">
+                <span id="value">25</span>%
+            </progress>
+        </section>
+        <section>
+            <p><time>17:35</time> I started doing this task</p>
+            <p><time>20:30</time> I finished this task</p>
+        </section>
+        <button onclick="showContent()" id="btn">Show content</button>
+        <video width="400" height="300" controls="controls">
+            <source src="videos/ПОДВОДНЫЙ ТЕРРАРИУМ, БОЛЬШИЕ ПЕРЕМЕНЫ!.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            Тег video не поддерживается вашим браузером.
+        </video>
+        <p>pneumo<wbr>no<wbr>ultra<wbr>microscopic<wbr>sili<wbr>covol<wbr>canoco<wbr>niosis</p>
+    </main>
+    <dialog open>
+        <h1>END</h1>
+    </dialog>
+    <footer id="footer">
+        It`s footer
+    </footer>
+    <template id="template">
+        <div class="myClass">I like: </div>
+    </template>
+    <script>
+        var myArr = ["HTML", "CSS", "TS", "NODE", "EXPRESS"];
+        function showContent() {
+            var temp, item, a, i;
+            temp = document.getElementById("template");
+            item = temp.content.querySelector("div");
+            for (i = 0; i < myArr.length; i++) {
+                a = document.importNode(item, true);
+                a.textContent += myArr[i];
+                document.body.appendChild(a);
+                document.getElementById("btn").style.visibility = 'hidden';
+            }
+        }
+    </script>
+</body>
+
+</html>
